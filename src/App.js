@@ -95,13 +95,13 @@ export default function ContaConfiaWebsite() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50">
-      <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'}`}>
+      <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/98 backdrop-blur-md shadow-xl' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center"><LogoSVG /></div>
             <div className="hidden md:flex items-center space-x-8">
               {['inicio', 'nosotros', 'servicios', 'contacto'].map((item) => (
-                <button key={item} onClick={() => scrollToSection(item)} className={`capitalize font-medium transition-colors duration-200 ${activeSection === item ? 'text-blue-700' : 'text-gray-700 hover:text-blue-600'}`}>
+                <button key={item} onClick={() => scrollToSection(item)} className={`capitalize font-semibold transition-colors duration-200 ${activeSection === item ? 'text-blue-700 border-b-2 border-blue-700' : 'text-gray-700 hover:text-blue-600'}`}>
                   {item === 'nosotros' ? 'Sobre Nosotros' : item}
                 </button>
               ))}
@@ -116,7 +116,7 @@ export default function ContaConfiaWebsite() {
           {isMenuOpen && (
             <div className="md:hidden pb-4 animate-fade-in">
               <div className="flex flex-col space-y-3">
-                {['inicio', 'nosotros', 'servicios', 'contacto'].map((item) => (<button key={item} onClick={() => scrollToSection(item)} className="text-left px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors capitalize">{item === 'nosotros' ? 'Sobre Nosotros' : item}</button>))}
+                {['inicio', 'nosotros', 'servicios', 'contacto'].map((item) => (<button key={item} onClick={() => scrollToSection(item)} className="text-left px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors capitalize font-semibold">{item === 'nosotros' ? 'Sobre Nosotros' : item}</button>))}
                 <a href="https://wa.me/573014538051?text=Hola%20ContaConfia,%20me%20gustaría%20obtener%20información%20sobre%20sus%20servicios%20contables%20y%20financieros." target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-blue-600 to-emerald-500 text-white px-4 py-2 rounded-lg hover:shadow-lg transition-all flex items-center justify-center space-x-2"><FaWhatsapp className="w-4 h-4" /><span>WhatsApp</span></a>
               </div>
             </div>
@@ -126,14 +126,32 @@ export default function ContaConfiaWebsite() {
 
       <section id="inicio" className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16 animate-fade-in">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-700 via-blue-600 to-emerald-500 bg-clip-text text-transparent leading-tight">Confianza que impulsa<br />tu crecimiento</h1>
-            <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">Servicios contables y financieros profesionales en Ocaña, Colombia</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button onClick={() => scrollToSection('contacto')} className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300">Solicitar Asesoría</button>
-              <button onClick={() => scrollToSection('servicios')} className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-blue-50 hover:scale-105 transition-all duration-300">Ver Servicios</button>
+          <div className="grid md:grid-cols-2 gap-12 items-center mb-16 animate-fade-in">
+            <div>
+              <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-700 via-blue-600 to-emerald-500 bg-clip-text text-transparent leading-tight">
+                Confianza que impulsa tu crecimiento
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
+                Servicios contables y financieros profesionales en Ocaña, Colombia. Con más de una década de experiencia en el sector.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button onClick={() => scrollToSection('contacto')} className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  Solicitar Asesoría
+                </button>
+                <button onClick={() => scrollToSection('servicios')} className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-blue-50 hover:scale-105 transition-all duration-300">
+                  Ver Servicios
+                </button>
+              </div>
+            </div>
+            <div className="animate-fade-in">
+              <img 
+                src="/oficina.png" 
+                alt="Oficina ContaConfia - Equipo profesional trabajando" 
+                className="rounded-2xl shadow-2xl w-full h-auto object-cover hover:scale-105 transition-transform duration-300"
+              />
             </div>
           </div>
+
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { title: "✓ Atención Personalizada", desc: "Servicio adaptado a tu empresa" },
@@ -141,7 +159,8 @@ export default function ContaConfiaWebsite() {
               { title: "✓ Respuesta Rápida", desc: "Atención cuando la necesitas" }
             ].map((stat, index) => (
               <div key={index} className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:scale-105">
-                <h3 className="text-2xl font-bold text-blue-700 mb-2">{stat.title}</h3><p className="text-gray-600 text-lg">{stat.desc}</p>
+                <h3 className="text-2xl font-bold text-blue-700 mb-2">{stat.title}</h3>
+                <p className="text-gray-600 text-lg">{stat.desc}</p>
               </div>
             ))}
           </div>
@@ -155,19 +174,21 @@ export default function ContaConfiaWebsite() {
             <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-emerald-500 mx-auto rounded-full"></div>
           </div>
           <div className="grid md:grid-cols-2 gap-12 mb-16">
-            <div className="bg-gradient-to-br from-blue-50 to-emerald-50 p-8 rounded-3xl shadow-lg border border-gray-100">
+            <div className="bg-gradient-to-br from-blue-50 to-emerald-50 p-8 rounded-3xl shadow-lg border border-blue-100">
               <h3 className="text-2xl font-bold text-blue-700 mb-4 flex items-center"><FaCheckCircle className="w-6 h-6 mr-3 text-emerald-500" />Misión</h3>
-              <p className="text-gray-700 leading-relaxed text-lg">Proporcionar servicios contables y financieros de alta calidad, brindando soluciones personalizadas que impulsen el crecimiento sostenible de nuestros clientes.</p>
+              <p className="text-gray-700 leading-relaxed text-lg">Proporcionar servicios contables y financieros de alta calidad, brindando soluciones personalizadas que impulsen el crecimiento sostenible de nuestros clientes con transparencia y profesionalismo.</p>
             </div>
-            <div className="bg-gradient-to-br from-emerald-50 to-blue-50 p-8 rounded-3xl shadow-lg border border-gray-100">
+            <div className="bg-gradient-to-br from-emerald-50 to-blue-50 p-8 rounded-3xl shadow-lg border border-emerald-100">
               <h3 className="text-2xl font-bold text-emerald-600 mb-4 flex items-center"><FaCheckCircle className="w-6 h-6 mr-3 text-blue-600" />Visión</h3>
-              <p className="text-gray-700 leading-relaxed text-lg">Ser la firma contable líder en Ocaña y región, reconocida por nuestra excelencia, innovación y compromiso con el éxito de nuestros clientes.</p>
+              <p className="text-gray-700 leading-relaxed text-lg">Ser la firma contable líder en Ocaña y región, reconocida por nuestra excelencia, innovación constante y compromiso inquebrantable con el éxito financiero de nuestros clientes.</p>
             </div>
           </div>
           <div className="grid md:grid-cols-4 gap-6">
             {values.map((value, index) => (
               <div key={index} className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:scale-105 hover:border-blue-200">
-                <FaCheckCircle className="w-8 h-8 text-blue-600 mb-4" /><h4 className="font-bold text-lg mb-2 text-gray-900">{value.title}</h4><p className="text-gray-600">{value.description}</p>
+                <FaCheckCircle className="w-8 h-8 text-blue-600 mb-4" />
+                <h4 className="font-bold text-lg mb-2 text-gray-900">{value.title}</h4>
+                <p className="text-gray-600">{value.description}</p>
               </div>
             ))}
           </div>
@@ -179,7 +200,7 @@ export default function ContaConfiaWebsite() {
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">Nuestros <span className="bg-gradient-to-r from-blue-700 to-emerald-500 bg-clip-text text-transparent">Servicios</span></h2>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-emerald-500 mx-auto rounded-full mb-4"></div>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">Soluciones contables y financieras adaptadas a las necesidades de tu empresa</p>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">Soluciones contables y financieras completas adaptadas a las necesidades específicas de tu empresa</p>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
             {services.map((service, index) => (
@@ -217,7 +238,7 @@ export default function ContaConfiaWebsite() {
               </div>
               <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 flex items-center space-x-4">
                 <div className="bg-blue-100 p-4 rounded-xl"><HiLocationMarker className="w-8 h-8 text-blue-600" /></div>
-                <div><h4 className="font-bold text-lg text-gray-900">Ubicación</h4><p className="text-gray-600">Ocaña, Colombia</p></div>
+                <div><h4 className="font-bold text-lg text-gray-900">Ubicación</h4><p className="text-gray-600">Ocaña, Departamento del Norte de Santander, Colombia</p></div>
               </div>
               <a href="https://wa.me/573014538051?text=Hola%20ContaConfia,%20me%20gustaría%20obtener%20información%20sobre%20sus%20servicios%20contables%20y%20financieros." target="_blank" rel="noopener noreferrer" className="block bg-gradient-to-r from-emerald-500 to-emerald-600 text-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
                 <div className="flex items-center justify-center space-x-3"><FaWhatsapp className="w-8 h-8" /><div className="text-left"><h4 className="font-bold text-lg">WhatsApp</h4><p className="text-emerald-100">Chatea con nosotros ahora</p></div></div>
@@ -242,11 +263,11 @@ export default function ContaConfiaWebsite() {
       <footer className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
-            <div><div className="mb-4"><LogoSVG /></div><p className="text-gray-400 leading-relaxed">Confianza que impulsa tu crecimiento</p></div>
+            <div><div className="mb-4"><LogoSVG /></div><p className="text-gray-400 leading-relaxed">Confianza que impulsa tu crecimiento. Servicios contables profesionales en Ocaña, Colombia.</p></div>
             <div><h4 className="font-bold mb-4 text-lg">Enlaces Rápidos</h4><ul className="space-y-2"><li><button onClick={() => scrollToSection('inicio')} className="text-gray-400 hover:text-white transition-colors">Inicio</button></li><li><button onClick={() => scrollToSection('nosotros')} className="text-gray-400 hover:text-white transition-colors">Sobre Nosotros</button></li><li><button onClick={() => scrollToSection('servicios')} className="text-gray-400 hover:text-white transition-colors">Servicios</button></li><li><button onClick={() => scrollToSection('contacto')} className="text-gray-400 hover:text-white transition-colors">Contacto</button></li></ul></div>
-            <div><h4 className="font-bold mb-4 text-lg">Síguenos</h4><div className="flex space-x-4"><a href="#" className="bg-white/10 p-3 rounded-xl hover:bg-blue-600 transition-colors duration-300" aria-label="Facebook"><FaFacebook className="w-6 h-6" /></a><a href="#" className="bg-white/10 p-3 rounded-xl hover:bg-pink-600 transition-colors duration-300" aria-label="Instagram"><FaInstagram className="w-6 h-6" /></a><a href="#" className="bg-white/10 p-3 rounded-xl hover:bg-blue-700 transition-colors duration-300" aria-label="LinkedIn"><FaLinkedin className="w-6 h-6" /></a></div></div>
+            <div><h4 className="font-bold mb-4 text-lg">Síguenos</h4><div className="flex space-x-4"><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="bg-white/10 p-3 rounded-xl hover:bg-blue-600 transition-colors duration-300" aria-label="Facebook"><FaFacebook className="w-6 h-6" /></a><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="bg-white/10 p-3 rounded-xl hover:bg-pink-600 transition-colors duration-300" aria-label="Instagram"><FaInstagram className="w-6 h-6" /></a><a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="bg-white/10 p-3 rounded-xl hover:bg-blue-700 transition-colors duration-300" aria-label="LinkedIn"><FaLinkedin className="w-6 h-6" /></a></div></div>
           </div>
-          <div className="border-t border-gray-700 pt-8 text-center text-gray-400"><p>© 2024 ContaConfia S.A.S. Todos los derechos reservados.</p></div>
+          <div className="border-t border-gray-700 pt-8 text-center text-gray-400"><p>© 2024 ContaConfia S.A.S. Todos los derechos reservados. Ocaña, Colombia.</p></div>
         </div>
       </footer>
 
