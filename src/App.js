@@ -102,7 +102,7 @@ export default function ContaConfiaWebsite() {
      <img 
        src="/contaconfia-logo.png" 
        alt="Logo ContaConfia" 
-       className="h-30 w-auto hover:scale-110 transition-transform"
+       className="h-28 w-auto hover:scale-110 transition-transform"
      />
    </div>
             <div className="hidden md:flex items-center space-x-8">
