@@ -98,7 +98,13 @@ export default function ContaConfiaWebsite() {
       <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/98 backdrop-blur-md shadow-xl' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
-            <div className="flex items-center"><LogoSVG /></div>
+           <div className="flex items-center">
+     <img 
+       src="/contaconfia-logo.png" 
+       alt="Logo ContaConfia" 
+       className="h-24 w-auto hover:scale-110 transition-transform"
+     />
+   </div>
             <div className="hidden md:flex items-center space-x-8">
               {['inicio', 'nosotros', 'servicios', 'contacto'].map((item) => (
                 <button key={item} onClick={() => scrollToSection(item)} className={`capitalize font-semibold transition-colors duration-200 ${activeSection === item ? 'text-blue-700 border-b-2 border-blue-700' : 'text-gray-700 hover:text-blue-600'}`}>
